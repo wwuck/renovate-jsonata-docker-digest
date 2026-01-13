@@ -1,0 +1,4 @@
+include:
+  - component: $CI_SERVER_FQDN/components/markdownlint/markdownlint@2.1.0
+    inputs:
+      image: davidanson/markdownlint-cli2:v0.13.0@sha256:78a9049a19f434c0b6656b8460237ed61a56ee09147f62abbc85d90f04c27211

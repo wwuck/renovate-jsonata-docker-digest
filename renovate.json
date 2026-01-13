@@ -1,0 +1,21 @@
+{
+    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+    "dependencyDashboard": true,
+    "gitlabci": {
+        "enabled": false
+    },
+    "customManagers": [
+        {
+            "customType": "jsonata",
+            "datasourceTemplate": "docker",
+            "description": "Detect component image input",
+            "fileFormat": "yaml",
+            "managerFilePatterns": [
+                "/\\.gitlab-ci\\.ya?ml$/"
+            ],
+            "matchStrings": [
+                "$map(include[component].inputs.image, function($v){ { \"depName\": $split( $v, \":\" )[0], \"currentValue\": $split( $split( $v, \"@\" )[0], \":\" )[1], \"currentDigest\": $split( $v, \"@\" )[1] } } )"
+            ]
+        }
+    ]
+}
